@@ -45,6 +45,37 @@
             bottom: 0;
             width: 100%;
         }
+        .carousel-container {
+          position: relative;
+          width: 100%;
+          max-width: 600px;
+          overflow: hidden;
+          margin: auto;
+        }
+
+        .carousel-slide {
+          display: flex;
+          width: 300%;
+          transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide img {
+          width: 100%;
+        }
+
+        .prev-btn, .next-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: none;
+          cursor: pointer;
+          padding: 16px;
+        }
+
+        .prev-btn { left: 0; }
+        .next-btn { right: 0; }
     </style>
 </head>
 <body>
@@ -53,9 +84,19 @@
     <h1>Congratulations on becoming an MITSolver!</h1>
 </header>
 
+<div class="carousel-container">
+    <div class="carousel-slide">
+        <img src="img/team.jpg" alt="Team OpenFlexure! THE BEST TEAM!">
+        <img src="img/MIT.png" alt="Award givers with fantastic taste">
+        <img src="img/ofm.jpg" alt="The best project ever">
+    </div>
+    <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
 <div class="content">
     <h2>OPENFLEXURE WIN MITSOLVE AWARD</h2>
-    <img src="img/team.jpg" alt="Team OpenFlexure! THE BEST TEAM!"><img src="img/MIT.png" alt="Award givers with fantastic taste"><img src="img/ofm.jpg" alt="The best project ever">
+    
     <h1>YOU DID IT!!</h1>
     <p>Congratulations on being selected as an MIT Solver! You should be so proud of everything you have achieved with OpenFlexure. Your hard work has really paid off!</p>
     <p> You are <b>changing the world</b>, and I am so excited for what this recognition and funding is going to do for you and the project.</p>
@@ -75,6 +116,25 @@
 <footer>
     <p>Go team OFM!</p>
 </footer>
+
+<script>
+    let slideIndex = 0;
+
+    function moveSlide(n) {
+      const slides = document.querySelector('.carousel-slide');
+      const totalSlides = slides.children.length;
+
+      slideIndex += n;
+
+      if (slideIndex >= totalSlides) {
+        slideIndex = 0;
+      } else if (slideIndex < 0) {
+        slideIndex = totalSlides - 1;
+      }
+
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    }
+</script>
 
 </body>
 </html>
