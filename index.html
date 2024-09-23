@@ -47,7 +47,7 @@
         }
         .carousel-container {
           position: relative;
-          width: 100%;
+          width: 75%;
           max-width: 600px;
           overflow: hidden;
           margin: auto;
@@ -55,12 +55,14 @@
 
         .carousel-slide {
           display: flex;
-          width: 300%;
+          width: 100%;
           transition: transform 0.5s ease-in-out;
         }
 
         .carousel-slide img {
           width: 100%;
+          height: auto; /* Maintain the aspect ratio */
+          object-fit: cover; /* Ensures the image covers the container, cropping if necessary */
         }
 
         .prev-btn, .next-btn {
